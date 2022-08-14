@@ -252,7 +252,7 @@ def izokratikus_fajlbol(fnev):
 
 nev = ''
 df = pd.read_csv("gradiens.csv", sep=';', skipinitialspace=True, encoding="cp1250")
-'''
+
 while True:
     #    nev = input("Adja meg a mérés nevét: ")
     #    meres_tipusa = input("Izokratikus vagy Gradiens mérés?")
@@ -270,4 +270,3 @@ while True:
             izokratikus_fajlbol(nev)
         else:
             izokratikus(nev)
-'''
