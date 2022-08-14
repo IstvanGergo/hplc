@@ -1,0 +1,526 @@
+<NameScreen>:
+    FloatLayout:
+        size:root.width, root.height
+        Label:
+            text: "Adja meg a mérés nevét!"
+            pos_hint:{"x":0,"y":0.4}
+            font_size: 45
+        TextInput:
+            id: "megadott_nev"
+            pos_hint:{"x":0.2,"y":0.3}
+            size_hint: 0.6,0.2
+            multiline: False
+        Button:
+            text: "Tovább"
+            pos_hint: {"x":0.2,"y":0.1}
+            size_hint:0.6,0.2
+            on_press: root.mérés_gomb()
+            on_press: root.manager.current = 'MainWindow'
+
+<MainWindow>:
+    FloatLayout:
+        size:root.width, root.height
+        Label:
+            text: "Izokratikus vagy Gradiens mérés?"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            pos_hint:{"x":0,"y":0.4}
+            font_size: 45
+        Button:
+            id: "Izokratikus"
+            text: "Izokratikus"
+            size_hint: 0.3,0.4
+            pos_hint: {"x":0.6,"y":0.3}
+            on_press: root.manager.current = 'IzokratikusWindow'
+        Button:
+            id: "Gradiens"
+            text: "Gradiens"
+            size_hint: 0.3,0.4
+            pos_hint: {"x":0.1,"y":0.3}
+            on_press: root.manager.current = 'GradiensWindow'
+<GradiensWindow>:
+    GridLayout:
+        pos_hint: {"x":0,"y":0.2}
+        size_hint: 1,0.8
+        cols:5
+        rows:4
+        Label:
+            text: "Eluens sebessége"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            pos_hint: {"x":0.3,"y":0.75}
+            size_hint: 0.5, 0.2
+        Label:
+            text: "Minták száma"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.2
+            pos_hint: {"x":0.3,"y":0.25}
+        Label:
+            text: "Standardek száma"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            pos_hint: {"x":0.3,"y":0.75}
+            size_hint: 0.5, 0.2
+        Label:
+            text: "A eluens mennyisége"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            pos_hint: {"x":0.3,"y":0.75}
+            size_hint: 0.5, 0.2
+        Label:
+            text: "B eluens mennyisége"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            pos_hint: {"x":0.3,"y":0.75}
+            size_hint: 0.5, 0.2
+        TextInput:
+            id: grad_seb
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+        TextInput:
+            id: gmintak_szama
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+        TextInput:
+            id: gstd_szama
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+        Label:
+            id: a_eluens
+            text: '1'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.1}
+        Label:
+            id: b_eluens
+            text: '1'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.1}
+        Label:
+            text: "1. injektálási idő"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            pos_hint: {"x":0.3,"y":0.75}
+            size_hint: 0.5, 0.2
+        Label:
+            text: "2. injektálási idő"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            pos_hint: {"x":0.3,"y":0.75}
+            size_hint: 0.5, 0.2
+        Label:
+            text: "3. injektálási idő"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            pos_hint: {"x":0.3,"y":0.75}
+            size_hint: 0.5, 0.2
+        Label:
+            text: "4. injektálási idő"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            pos_hint: {"x":0.3,"y":0.75}
+            size_hint: 0.5, 0.2
+        Label:
+            text: "5. injektálási idő"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            pos_hint: {"x":0.3,"y":0.75}
+            size_hint: 0.5, 0.2
+        TextInput:
+            id: idok[0]
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+        TextInput:
+            id: idok[1]
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+        TextInput:
+            id: idok[2]
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+        TextInput:
+            id: idok[3]
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+        TextInput:
+            id: idok[4]
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+    AnchorLayout:
+        anchor_x: 'left'
+        anchor_y: 'bottom'
+        Button:
+            id: "menu"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: "Vissza a menübe"
+            size_hint: 0.2, 0.1
+            on_press: root.manager.current = "MainWindow"
+    AnchorLayout:
+        anchor_x: 'right'
+        anchor_y: 'bottom'
+        Button:
+            id: "aranyok"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: "Arányok megadása"
+            size_hint: 0.2, 0.1
+            on_press: root.manager.current = "AranyScreen"
+<AranyScreen>:
+    GridLayout:
+        cols: 5
+        rows: 4
+        pos_hint: {"x":0,"y":0.2}
+        size_hint: 1,0.8
+        Label:
+            text: "A eluens 1. aránya"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.2
+            pos_hint: {"x":0.3,"y":0.25}
+        Label:
+            text: "A eluens 2. aránya"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.2
+            pos_hint: {"x":0.3,"y":0.25}
+        Label:
+            text: "A eluens 3. aránya"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.2
+            pos_hint: {"x":0.3,"y":0.25}
+        Label:
+            text: "A eluens 4. aránya"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.2
+            pos_hint: {"x":0.3,"y":0.25}
+        Label:
+            text: "A eluens 5. aránya"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.2
+            pos_hint: {"x":0.3,"y":0.25}
+        TextInput:
+            id: a_arany[0]
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+        TextInput:
+            id: a_arany[1]
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+        TextInput:
+            id: a_arany[2]
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+        TextInput:
+            id: a_arany[3]
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+        TextInput:
+            id: a_arany[4]
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+        Label:
+            text: "B eluens 1. aránya"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.2
+            pos_hint: {"x":0.3,"y":0.25}
+        Label:
+            text: "B eluens 2. aránya"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.2
+            pos_hint: {"x":0.3,"y":0.25}
+        Label:
+            text: "B eluens 3. aránya"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.2
+            pos_hint: {"x":0.3,"y":0.25}
+        Label:
+            text: "B eluens 4. aránya"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.2
+            pos_hint: {"x":0.3,"y":0.25}
+        Label:
+            text: "B eluens 5. aránya"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.2
+            pos_hint: {"x":0.3,"y":0.25}
+        TextInput:
+            id: b_arany[0]
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+        TextInput:
+            id: b_arany[1]
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+        TextInput:
+            id: b_arany[2]
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+        TextInput:
+            id: b_arany[3]
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+        TextInput:
+            id: b_arany[4]
+            text: '0'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+    AnchorLayout:
+        anchor_x: 'left'
+        anchor_y: 'bottom'
+        Button:
+            id: "menu"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: "Vissza a menübe"
+            size_hint: 0.2, 0.1
+            on_press: root.manager.current = "MainWindow"
+    AnchorLayout:
+        anchor_x: 'right'
+        anchor_y: 'bottom'
+        Button:
+            id: "menu"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: "Vissza a gradienshez"
+            size_hint: 0.2, 0.1
+            on_press: root.manager.current = "GradiensWindow"
+<IzokratikusWindow>:
+    AnchorLayout:
+        anchor_x: 'left'
+        anchor_y: 'top'
+        FloatLayout:
+            size_hint: 0.4, 0.8
+            Label:
+                text: "Eluens sebessége"
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                pos_hint: {"x":0.3,"y":0.75}
+                size_hint: 0.5, 0.2
+            TextInput:
+                id: izo_seb
+                text: '0'
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                size_hint: 0.5, 0.075
+                pos_hint: {"x":0.3,"y":0.6}
+            Label:
+                text: "Minták száma"
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                size_hint: 0.5, 0.2
+                pos_hint: {"x":0.3,"y":0.25}
+            TextInput:
+                id: mintak_szama
+                text: '0'
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                size_hint: 0.5, 0.075
+                pos_hint: {"x":0.3,"y":0.1}
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'top'
+        FloatLayout:
+            size_hint: 0.4, 0.8
+            Label:
+                text: "Standardek száma"
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                pos_hint: {"x":0.3,"y":0.75}
+                size_hint: 0.5, 0.2
+            TextInput:
+                id: std_szama
+                text: '0'
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                size_hint: 0.5, 0.075
+                pos_hint: {"x":0.3,"y":0.6}
+            Label:
+                text: "Idő/minta"
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                size_hint: 0.5, 0.2
+                pos_hint: {"x":0.3,"y":0.25}
+            TextInput:
+                id: minta_ido
+                text: '0'
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                size_hint: 0.5, 0.075
+                pos_hint: {"x":0.3,"y":0.1}
+    AnchorLayout:
+        anchor_x: 'right'
+        anchor_y: 'top'
+        FloatLayout:
+            size_hint: 0.4, 0.8
+            Label:
+                text:"Idő/std"
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                pos_hint: {"x":0.3,"y":0.75}
+                size_hint: 0.5, 0.2
+            TextInput:
+                id: std_ido
+                text: '0'
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                size_hint: 0.5, 0.075
+                pos_hint: {"x":0.3,"y":0.6}
+            Label:
+                text: "Eluens mennyisége"
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                size_hint: 0.5, 0.2
+                pos_hint: {"x":0.3,"y":0.25}
+            Label
+                id: eluens
+                text: ''
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                size_hint: 0.5, 0.075
+                pos_hint: {"x":0.3,"y":0.1}
+    AnchorLayout:
+        anchor_x: 'left'
+        anchor_y: 'bottom'
+        Button:
+            id: "menu"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: "Vissza a menübe"
+            size_hint: 0.2, 0.1
+            on_press: root.manager.current = "MainWindow"
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'bottom'
+        Button:
+            id: "szamol"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: "Eluens kiszámítása"
+            size_hint: 0.3, 0.1
+            on_press: root.szamol()
+
