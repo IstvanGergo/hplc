@@ -5,15 +5,6 @@ from kivy.properties import StringProperty
 from kivy.properties import ObjectProperty
 import pulmo
 
-
-class NameScreen(Screen):
-    megadott_nev = StringProperty(None)
-
-    def mérés_gomb(self):
-        pulmo.nev = self.megadott_nev
-        print(pulmo.nev)
-
-
 class MainWindow(Screen):  # Az app első ablaka, innen lehetne továbblépni választás alapján
     pass
 
@@ -49,13 +40,10 @@ class Hplc(App):
 
     def build(self):
         sm = ScreenManager()
+        sm.add_widget(MainWindow(name="MainWindow"))
         sm.add_widget(GradiensWindow(name="GradiensWindow"))
         sm.add_widget(IzokratikusWindow(name="IzokratikusWindow"))
         sm.add_widget(AranyScreen(name="AranyScreen"))
-        sm.add_widget(NameScreen(name="NameScreen"))
-        sm.add_widget(MainWindow(name="MainWindow"))
-
-
         return sm
 
 
