@@ -1,4 +1,4 @@
-#:kivy
+#:kivy 2.0.0
 <MainWindow>:
     FloatLayout:
         size:root.width, root.height
@@ -23,10 +23,10 @@
             on_press: root.manager.current = 'GradiensWindow'
 <GradiensWindow>:
     GridLayout:
-        pos_hint: {"x":0,"y":0.2}
-        size_hint: 1,0.8
+        pos_hint: {"x":0,"y":0.6}
+        size_hint: 1,0.4
         cols:5
-        rows:4
+        rows:2
         Label:
             text: "Eluens sebessége"
             text_size: self.size
@@ -50,6 +50,7 @@
             size_hint: 0.5, 0.2
         Label:
             text: "A eluens mennyisége"
+            id: a_eluens_text
             text_size: self.size
             halign: 'center'
             valign: 'middle'
@@ -66,13 +67,17 @@
             id: grad_seb
             text: '0'
             text_size: self.size
+            input_filter: "float"
+            cursor_color: 0,0,0,1
             halign: 'center'
             valign: 'middle'
             size_hint: 0.5, 0.075
             pos_hint: {"x":0.3,"y":0.6}
         TextInput:
             id: gmintak_szama
+            input_filter: "int"
             text: '0'
+            cursor_color: 0,0,0,1
             text_size: self.size
             halign: 'center'
             valign: 'middle'
@@ -81,6 +86,8 @@
         TextInput:
             id: gstd_szama
             text: '0'
+            input_filter: "int"
+            cursor_color: 0,0,0,1
             text_size: self.size
             halign: 'center'
             valign: 'middle'
@@ -88,7 +95,6 @@
             pos_hint: {"x":0.3,"y":0.6}
         Label:
             id: a_eluens
-            text: '1'
             text_size: self.size
             halign: 'center'
             valign: 'middle'
@@ -96,12 +102,17 @@
             pos_hint: {"x":0.3,"y":0.1}
         Label:
             id: b_eluens
-            text: '1'
             text_size: self.size
             halign: 'center'
             valign: 'middle'
             size_hint: 0.5, 0.075
             pos_hint: {"x":0.3,"y":0.1}
+    GridLayout:
+        pos_hint: {"x":0,"y":0.2}
+        size_hint: 1,0.4
+        cols:5
+        rows:2
+        id: idok
         Label:
             text: "1. injektálási idő"
             text_size: self.size
@@ -138,41 +149,51 @@
             pos_hint: {"x":0.3,"y":0.75}
             size_hint: 0.5, 0.2
         TextInput:
-            id: idok[0]
+            id: idok_in0
             text: '0'
+            text_size: self.size
+            input_filter: "int"
+            cursor_color: 0,0,0,1
+            halign: 'center'
+            valign: 'middle'
+            size_hint: 0.5, 0.075
+            pos_hint: {"x":0.3,"y":0.6}
+        TextInput:
+            id: idok_in1
+            text: '0'
+            input_filter: "int"
+            cursor_color: 0,0,0,1
             text_size: self.size
             halign: 'center'
             valign: 'middle'
             size_hint: 0.5, 0.075
             pos_hint: {"x":0.3,"y":0.6}
         TextInput:
-            id: idok[1]
+            id: idok_in2
             text: '0'
             text_size: self.size
+            input_filter: "int"
+            cursor_color: 0,0,0,1
             halign: 'center'
             valign: 'middle'
             size_hint: 0.5, 0.075
             pos_hint: {"x":0.3,"y":0.6}
         TextInput:
-            id: idok[2]
+            id: idok_in3
             text: '0'
             text_size: self.size
             halign: 'center'
+            input_filter: "int"
+            cursor_color: 0,0,0,1
             valign: 'middle'
             size_hint: 0.5, 0.075
             pos_hint: {"x":0.3,"y":0.6}
         TextInput:
-            id: idok[3]
+            id: idok_in4
             text: '0'
             text_size: self.size
-            halign: 'center'
-            valign: 'middle'
-            size_hint: 0.5, 0.075
-            pos_hint: {"x":0.3,"y":0.6}
-        TextInput:
-            id: idok[4]
-            text: '0'
-            text_size: self.size
+            input_filter: "int"
+            cursor_color: 0,0,0,1
             halign: 'center'
             valign: 'middle'
             size_hint: 0.5, 0.075
@@ -199,12 +220,24 @@
             text: "Arányok megadása"
             size_hint: 0.2, 0.1
             on_press: root.manager.current = "AranyScreen"
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'bottom'
+        Button:
+            id: "szamol"
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: "Eluens kiszámítása"
+            size_hint: 0.3, 0.1
+            on_press: root.g_szamol()
 <AranyScreen>:
     GridLayout:
         cols: 5
-        rows: 4
+        rows: 2
         pos_hint: {"x":0,"y":0.2}
-        size_hint: 1,0.8
+        size_hint: 1,0.4
+        id: a_aranyok_in
         Label:
             text: "A eluens 1. aránya"
             text_size: self.size
@@ -241,45 +274,61 @@
             size_hint: 0.5, 0.2
             pos_hint: {"x":0.3,"y":0.25}
         TextInput:
-            id: a_arany[0]
+            id: a_arany_in0
             text: '0'
             text_size: self.size
+            input_filter: "int"
+            cursor_color: 0,0,0,1
             halign: 'center'
             valign: 'middle'
             size_hint: 0.5, 0.075
             pos_hint: {"x":0.3,"y":0.6}
         TextInput:
-            id: a_arany[1]
+            id: a_arany_in1
             text: '0'
             text_size: self.size
+            input_filter: "int"
+            cursor_color: 0,0,0,1
             halign: 'center'
             valign: 'middle'
             size_hint: 0.5, 0.075
             pos_hint: {"x":0.3,"y":0.6}
         TextInput:
-            id: a_arany[2]
+            id: a_arany_in2
             text: '0'
             text_size: self.size
+            input_filter: "int"
+            cursor_color: 0,0,0,1
             halign: 'center'
             valign: 'middle'
             size_hint: 0.5, 0.075
             pos_hint: {"x":0.3,"y":0.6}
         TextInput:
-            id: a_arany[3]
+            id: a_arany_in3
             text: '0'
             text_size: self.size
+            input_filter: "int"
+            cursor_color: 0,0,0,1
             halign: 'center'
             valign: 'middle'
             size_hint: 0.5, 0.075
             pos_hint: {"x":0.3,"y":0.6}
         TextInput:
-            id: a_arany[4]
+            id: a_arany_in4
             text: '0'
             text_size: self.size
+            input_filter: "int"
+            cursor_color: 0,0,0,1
             halign: 'center'
             valign: 'middle'
             size_hint: 0.5, 0.075
             pos_hint: {"x":0.3,"y":0.6}
+    GridLayout:
+        cols: 5
+        rows: 2
+        pos_hint: {"x":0,"y":0.6}
+        size_hint: 1,0.4
+        id: b_aranyok_in
         Label:
             text: "B eluens 1. aránya"
             text_size: self.size
@@ -316,41 +365,51 @@
             size_hint: 0.5, 0.2
             pos_hint: {"x":0.3,"y":0.25}
         TextInput:
-            id: b_arany[0]
+            id: b_arany_in0
             text: '0'
             text_size: self.size
+            input_filter: "int"
+            cursor_color: 0,0,0,1
             halign: 'center'
             valign: 'middle'
             size_hint: 0.5, 0.075
             pos_hint: {"x":0.3,"y":0.6}
         TextInput:
-            id: b_arany[1]
+            id: b_arany_in1
             text: '0'
             text_size: self.size
+            input_filter: "int"
+            cursor_color: 0,0,0,1
             halign: 'center'
             valign: 'middle'
             size_hint: 0.5, 0.075
             pos_hint: {"x":0.3,"y":0.6}
         TextInput:
-            id: b_arany[2]
+            id: b_arany_in2
             text: '0'
             text_size: self.size
+            input_filter: "int"
+            cursor_color: 0,0,0,1
             halign: 'center'
             valign: 'middle'
             size_hint: 0.5, 0.075
             pos_hint: {"x":0.3,"y":0.6}
         TextInput:
-            id: b_arany[3]
+            id: b_arany_in3
             text: '0'
             text_size: self.size
+            input_filter: "int"
+            cursor_color: 0,0,0,1
             halign: 'center'
             valign: 'middle'
             size_hint: 0.5, 0.075
             pos_hint: {"x":0.3,"y":0.6}
         TextInput:
-            id: b_arany[4]
+            id: b_arany_in4
             text: '0'
             text_size: self.size
+            input_filter: "int"
+            cursor_color: 0,0,0,1
             halign: 'center'
             valign: 'middle'
             size_hint: 0.5, 0.075
@@ -394,6 +453,7 @@
                 id: izo_seb
                 text: '0'
                 text_size: self.size
+                cursor_color: 0,0,0,1
                 halign: 'center'
                 valign: 'middle'
                 size_hint: 0.5, 0.075
@@ -409,6 +469,8 @@
                 id: mintak_szama
                 text: '0'
                 text_size: self.size
+                input_filter: "int"
+                cursor_color: 0,0,0,1
                 halign: 'center'
                 valign: 'middle'
                 size_hint: 0.5, 0.075
@@ -429,6 +491,8 @@
                 id: std_szama
                 text: '0'
                 text_size: self.size
+                cursor_color: 0,0,0,1
+                input_filter: "int"
                 halign: 'center'
                 valign: 'middle'
                 size_hint: 0.5, 0.075
@@ -444,6 +508,8 @@
                 id: minta_ido
                 text: '0'
                 text_size: self.size
+                input_filter: "int"
+                cursor_color: 0,0,0,1
                 halign: 'center'
                 valign: 'middle'
                 size_hint: 0.5, 0.075
@@ -464,6 +530,8 @@
                 id: std_ido
                 text: '0'
                 text_size: self.size
+                cursor_color: 0,0,0,1
+                input_filter: "int"
                 halign: 'center'
                 valign: 'middle'
                 size_hint: 0.5, 0.075
@@ -477,7 +545,6 @@
                 pos_hint: {"x":0.3,"y":0.25}
             Label
                 id: eluens
-                text: ''
                 text_size: self.size
                 halign: 'center'
                 valign: 'middle'
@@ -504,5 +571,4 @@
             valign: 'middle'
             text: "Eluens kiszámítása"
             size_hint: 0.3, 0.1
-            on_press: root.szamol()
-
+            on_press: root.i_szamol()
