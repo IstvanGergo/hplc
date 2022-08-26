@@ -249,9 +249,6 @@ def izokratikus_fajlbol(fnev):
     print(f'{eluens} mL eluens szükséges a méréshez.')
     print(f"A mérés összesen {int(ossz_ido / 60)} óra {ossz_ido % 60} percig tart tart")
 
-nev = ''
-df = pd.read_csv("gradiens.csv", sep=';', skipinitialspace=True, encoding="cp1250")
-
 while True:
     #    nev = input("Adja meg a mérés nevét: ")
     #    meres_tipusa = input("Izokratikus vagy Gradiens mérés?")
