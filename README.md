@@ -1,2 +1,2 @@
 # hplc
-hplc calc with kivy/pandas
+hplc eluent calculator with kivy/pandas
